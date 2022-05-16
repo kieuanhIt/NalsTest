@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
 
 import Header from '../components/Header/header';
-import Login from '../components/Login/index';
+import Login from '../page/Login/index';
 import BlogDetail from '../page/BlogDetail/index';
 import {ToastProvider} from 'react-toast-notifications'
 import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';

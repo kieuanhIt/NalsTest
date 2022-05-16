@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
-import { Media , Container} from 'reactstrap';
+import { Form,FormGroup,Input,Label,Button,Container} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
+
 
 export default function Login() {
     
@@ -101,7 +103,28 @@ export default function Login() {
           {errorMessage()}
           {successMessage()}
         </div>
-   
+        <Form className="form">
+            <FormGroup>
+                <Label for="email">Email</Label>
+                <Input
+                onChange={handleEmail} className="input"
+                value={email} type="email"
+                placeholder="Enter your email"
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label for="password">Password</Label>
+                <Input
+                onChange={handlePassword} className="input"
+                value={password} type="password"
+                placeholder="Enter your password"
+                />
+
+            </FormGroup>
+            <Button onClick={handleSubmit} className="btn" type="submit">
+                Submit
+            </Button>
+            </Form>
         <form>
           {/* Labels and inputs for form data */}
          

@@ -13,7 +13,7 @@ function Header() {
     const isLogined = useSelector(state=> (state.userLogined.isLogined));
     const [ userName, setUserName ] = useState('');
     let token = "";
-    
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(prevState => !prevState);
   
@@ -64,11 +64,12 @@ function Header() {
     // refresh token
     const refreshToken = async () => {
         
-        await axios.get('https://api-placeholder.herokuapp.com/api/v2/refresh_tokens',{
+        await axios.post('https://api-placeholder.herokuapp.com/api/v2/refresh_tokens',{
             contentType : 'application/json' ,
+            
        })
        .then (res => {
-        //    console.log(res);
+           console.log(res);
        })
 
     }

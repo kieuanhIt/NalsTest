@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
-import { Media , Container} from 'reactstrap';
+import { Form,FormGroup,Input,Label,Button,Container} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 
 export default function Register() {
@@ -102,7 +103,7 @@ export default function Register() {
     };
    
     return (
-      <div className="form">
+      <Container>
         <div>
           <h1>User Registration</h1>
         </div>
@@ -112,39 +113,51 @@ export default function Register() {
           {errorMessage()}
           {successMessage()}
         </div>
-   
-        <form>
-          {/* Labels and inputs for form data */}
-            <div className="group-input">
-                <label className="label">Name</label>
-                <input onChange={handleName} className="input"
-                    value={name} type="text" />
+        <Form className="form">
+            <FormGroup>
+                <Label for="name">Name</Label>
+                <Input
+                onChange={handleName} 
+                value={name}
+                type="text"
+                placeholder="Enter your name"
+                />
                 {errorDetail == 1 ? <span>You exceeded the maximum number (50) of Text characters!!</span> : '' }
-            </div>
-         
-            <div className="group-input">
-                <label className="label">Email</label>
-                <input onChange={handleEmail} className="input"
-                value={email} type="email" />
-            </div>
 
-            <div className="group-input">
-                <label className="label">Password</label>
-                <input onChange={handlePassword} className="input"
-                    value={password} type="password" />
+            </FormGroup>
+            <FormGroup>
+                <Label for="email">Email</Label>
+                <Input
+                onChange={handleEmail} className="input"
+                value={email} type="email"
+                placeholder="Enter your email"
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label for="password">Password</Label>
+                <Input
+                onChange={handlePassword} className="input"
+                value={password} type="password"
+                placeholder="Enter your password"
+                />
                 {errorDetail == 2 ? <span>At least 8 characters</span> : '' }
-            </div>
-            <div className="group-input">
-                <label className="label">Confirm Password</label>
-                <input onChange={handleConfirmPassword} className="input"
-                    value={confirmPassword} type="password" />
-                {errorDetail == 3 ? <span>Passwords don't match.</span> : '' }
-            </div>
 
-          <button onClick={handleSubmit} className="btn" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
+            </FormGroup>
+            <FormGroup>
+                <Label for="confirm_password">Confirm Password</Label>
+                <Input
+                onChange={handleConfirmPassword} className="input"
+                value={confirmPassword} type="password"
+                placeholder="Enter your password"
+                />
+                {errorDetail == 3 ? <span>Passwords don't match.</span> : '' }
+            </FormGroup>
+            <Button onClick={handleSubmit} className="btn" type="submit">
+                Submit
+            </Button>
+            {/* <Button>Submit</Button> */}
+      </Form>
+       
+      </Container>
     );
   }

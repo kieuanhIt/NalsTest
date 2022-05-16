@@ -3,21 +3,27 @@ import {  useDispatch, useSelector } from 'react-redux';
 import { Media , Container} from 'reactstrap';
 import PaginationBlog from './PaginationBlog';
 import SearchBar from './Search';
+import ModalAddBlog from './ModalAddBlog';
 import BlogDetail from '../BlogDetail/index';
 import './blog.scss'; 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 import axios from "axios";
+
+
+
 
 function Blog() {
     
     const listBlog = useSelector(state=> (state.showListBlog.listBlog));
     const pageNumber = useSelector(state=> (state.showListBlog.pageNumber));
     const idBlog = useSelector(state=> (state.viewBlogDetail.idBlog));
+    const isLogined = useSelector(state=> (state.userLogined.isLogined));
     const [ isSearch, setIsSearch ] = useState(false);
-
+  
     const dispatch = useDispatch();
+
+   
 
     // get blogs from api
     const getBlog = async () => {
@@ -39,23 +45,6 @@ function Blog() {
     
     // Handling the search feature for blog list 
 
-    const filterPosts = (listBlog, query) => {
-        if (!query) {
-            return listBlog;
-        }
-    
-        return listBlog.filter((post) => {
-            const postName = post.title.toLowerCase();
-            return postName.includes(query);
-        });
-    };
-    // const { search } = window.location;
-    // const query = new URLSearchParams(search).get('s');
-    // const [searchQuery, setSearchQuery] = useState(query || '');
-    // const filteredPosts = filterPosts(listBlog, query);
-    // function clearFilter() {
-    //     document.getElementById("searchFilter").value = "";
-    //   }
     function searchList(event) {
         var updatedList = listBlog;
         var currentVal = event.target.value;
@@ -68,22 +57,31 @@ function Blog() {
                 payload_list: updatedList
                 }
             )
-            console.log(listBlog,updatedList)
         }, 300);
         
         setIsSearch(true);
         
-      }
-    
-    
-      
+    }
+ 
     useEffect(() => {
         getBlog();    
     })
+
+
     return (
         <Container>
-             <input type="text" placeholder="Search" onChange={searchList}/>
-            <Media list className="list-blog">
+            <div className="head-blog">
+                <div className="search">
+                    <input type="text" placeholder="Search" onChange={searchList}/>
+                </div>
+                { isLogined ? 
+                    <ModalAddBlog />
+                    :
+                    ''
+                }
+                 
+            </div>
+             <Media list className="list-blog">
             {listBlog.map((item,index) => 
                 <Media key={index} tag="li"> 
                     <Media className="thumb-blog">                      
@@ -103,6 +101,7 @@ function Blog() {
             } 
             </Media>  
             <PaginationBlog />
+           
         </Container>
     )
 }
