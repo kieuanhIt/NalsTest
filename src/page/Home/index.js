@@ -3,7 +3,7 @@ import {  useDispatch, useSelector } from 'react-redux';
 import { Media , Container} from 'reactstrap';
 import PaginationBlog from './PaginationBlog';
 import SearchBar from './Search';
-import ModalAddBlog from './ModalAddBlog';
+import ModalAddBlog from './AddBlog';
 import BlogDetail from '../BlogDetail/index';
 import './blog.scss'; 
 
@@ -39,6 +39,7 @@ function Blog() {
                 }
 
             )
+          
         })
 
     }
@@ -51,20 +52,19 @@ function Blog() {
         updatedList = updatedList.filter(function(item){
           return item.title.toLowerCase().search(currentVal.toLowerCase()) !== -1;
         });
-        setTimeout(() => {
-            dispatch({
-                type: "SHOW_LIST_BLOG",
-                payload_list: updatedList
-                }
-            )
-        }, 300);
         
+        dispatch({
+            type: "SHOW_LIST_BLOG",
+            payload_list: updatedList
+            }
+        )
         setIsSearch(true);
         
     }
  
     useEffect(() => {
-        getBlog();    
+        if( !isSearch)
+            getBlog();    
     })
 
 
@@ -78,8 +78,7 @@ function Blog() {
                     <ModalAddBlog />
                     :
                     ''
-                }
-                 
+                }  
             </div>
              <Media list className="list-blog">
             {listBlog.map((item,index) => 

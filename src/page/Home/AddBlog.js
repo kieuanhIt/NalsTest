@@ -12,17 +12,24 @@ function ModalAddBlog() {
     const [ titleBlog, setTitleBlog ] = useState('');
     const [ contentBlog, setContentBlog ] = useState('');
 
+     // States for checking the errors
+     const [submitted, setSubmitted] = useState(false);
+     const [error, setError] = useState(false);
+     const [txtError, setTxtError] = useState(false);
+     const [errorDetail, setErrorDetail] = useState(0);
     // Handling the title change
     const handleTitle = (e) => {
         setTitleBlog(e.target.value);
+        setSubmitted(false);
     };
    
     // Handling the content change
     const handleContent = (e) => {
         setContentBlog(e.target.value);
+        setSubmitted(false);
     };
     // Handling add a blog
-    const addBlog  = async () => {
+    const submitAddBlog  = async () => {
         await axios.post('https://api-placeholder.herokuapp.com/api/v2/blogs',{
             contentType : 'application/json' ,
             blog: {
@@ -36,6 +43,30 @@ function ModalAddBlog() {
             setModal(false);
         })
     }
+    const addBlog  = async (e) => {
+        e.preventDefault();
+        if (titleBlog === '' || contentBlog === '' ) {
+            setError(true);              
+        } 
+        else{
+            setSubmitted(true);
+            setError(false);
+            submitAddBlog()
+        }
+        
+    }
+    // Showing error message if error is true
+    const errorMessage = () => {
+        return (
+          <div
+              className="error"
+              style={{
+                  display: error ? '' : 'none',
+              }}>
+              <h1>Please enter all the fields</h1>
+          </div>
+        );
+      };
     return(
         <div className="">
             <div className="add-blog">
@@ -44,6 +75,9 @@ function ModalAddBlog() {
             <Modal isOpen={modal} toggle={togglePopup}>
                 <ModalHeader >Add Blog</ModalHeader>
                 <ModalBody>
+                    <div className="messages-error">
+                        {errorMessage()}
+                    </div>
                     <Form className="form">
                         <FormGroup>
                             <Label for="title-blog">Title</Label>

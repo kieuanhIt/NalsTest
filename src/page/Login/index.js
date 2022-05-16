@@ -93,7 +93,7 @@ export default function Login() {
     };
    
     return (
-      <div className="form">
+      <Container>
         <div>
           <h1>Login</h1>
         </div>
@@ -124,26 +124,8 @@ export default function Login() {
             <Button onClick={handleSubmit} className="btn" type="submit">
                 Submit
             </Button>
-            </Form>
-        <form>
-          {/* Labels and inputs for form data */}
-         
-            <div className="group-input">
-                <label className="label">Email</label>
-                <input onChange={handleEmail} className="input"
-                value={email} type="email" />
-            </div>
-
-            <div className="group-input">
-                <label className="label">Password</label>
-                <input onChange={handlePassword} className="input"
-                    value={password} type="password" />
-            </div>
-          
-          <button onClick={handleSubmit} className="btn" type="submit">
-            Submit
-          </button>
-        </form>
-      </div>
+          </Form>
+        
+      </Container>
     );
   }

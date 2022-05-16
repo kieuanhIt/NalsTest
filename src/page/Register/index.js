@@ -109,7 +109,7 @@ export default function Register() {
         </div>
    
         {/* Calling to the methods */}
-        <div className="messages">
+        <div className="messages-error">
           {errorMessage()}
           {successMessage()}
         </div>
