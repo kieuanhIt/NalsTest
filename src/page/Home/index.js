@@ -63,8 +63,7 @@ function Blog() {
     }
  
     useEffect(() => {
-        if( !isSearch)
-            getBlog();    
+        getBlog();    
     })
 
 
