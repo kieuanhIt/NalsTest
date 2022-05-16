@@ -1,0 +1,31 @@
+.header {
+  background: #641717;
+  padding: 20px 0;
+  .wrap-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left-head{
+      a{
+        color: #fff;
+        font-size: 20px;
+      }
+    }
+    .right-head{
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      margin-bottom: 0;
+      li{
+        margin: 0 5px;
+        a{
+          padding: 10px 25px;
+          background: #fff;
+          border-radius: 5px;
+          color: #641717;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

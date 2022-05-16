@@ -1,0 +1,56 @@
+ul.list-blog{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        display: flex;
+        width: 50%;
+        .media-body {
+            text-align: left;
+            padding-left: 30px;
+        }
+        .title-blog{
+            text-decoration: none;
+            color: #2677ac;
+            font-size: 20px;
+        }
+    }
+}
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+
+// Stype of Pagination
+.wrap-pagination {
+    ul{
+        list-style: none;
+        display: flex;
+        padding-left: 0;
+        justify-content: center;
+        li{
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 20px;
+            &.selected {
+                background: #5ac2ed;
+                color: #fff
+            }
+            &.previous,&.next {
+                a{
+                    text-decoration: none;
+                }
+                
+            }
+        }
+        
+    }
+}
