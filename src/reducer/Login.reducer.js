@@ -15,7 +15,7 @@ export const userLogined = (state = inState,action) => {
                 isLogin: action.payload
             }
         default :
-            return state;
+            return {...state};
     }
 }
 // set account login

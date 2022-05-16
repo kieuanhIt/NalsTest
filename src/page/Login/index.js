@@ -4,7 +4,8 @@ import { Media , Container} from 'reactstrap';
 import axios from "axios";
 
 export default function Login() {
-    localStorage.setItem("isLogined",false);
+    
+    const dispatch = useDispatch();
     // States for login
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -38,6 +39,10 @@ export default function Login() {
        .then (res => {
             localStorage.setItem("isLogined", true);
             console.log("Logined");
+            dispatch({
+              type: "CHANGE_LOGIN",
+              payload: true
+            })
             setTimeout(() => {
                 window.location = '/';
             }, 1000);
