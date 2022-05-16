@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import Routes from './routes/index';
 import Header from './components/Header/header';
 import Blog from './page/Home/index';
 import BlogDetail from './page/BlogDetail/index';

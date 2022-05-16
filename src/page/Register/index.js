@@ -97,67 +97,68 @@ export default function Register() {
             style={{
                 display: error ? '' : 'none',
             }}>
-            <h1>Please enter all the fields</h1>
+            <h4>Please enter all the fields</h4>
         </div>
       );
     };
    
     return (
       <Container>
-        <div>
-          <h1>User Registration</h1>
-        </div>
-   
-        {/* Calling to the methods */}
-        <div className="messages-error">
-          {errorMessage()}
-          {successMessage()}
-        </div>
-        <Form className="form">
-            <FormGroup>
-                <Label for="name">Name</Label>
-                <Input
-                onChange={handleName} 
-                value={name}
-                type="text"
-                placeholder="Enter your name"
-                />
-                {errorDetail == 1 ? <span>You exceeded the maximum number (50) of Text characters!!</span> : '' }
+        <div className="wrap-form">
+            <div className="cont-form">
+                <h3>Register</h3>
+        
+                {/* Calling to the methods */}
+                <div className="messages-error">
+                {errorMessage()}
+                {successMessage()}
+                </div>
+                <Form className="form">
+                    <FormGroup>
+                        <Label for="name">Name</Label>
+                        <Input
+                        onChange={handleName} 
+                        value={name}
+                        type="text"
+                        placeholder="Enter your name"
+                        />
+                        {errorDetail == 1 ? <span>You exceeded the maximum number (50) of Text characters!!</span> : '' }
 
-            </FormGroup>
-            <FormGroup>
-                <Label for="email">Email</Label>
-                <Input
-                onChange={handleEmail} className="input"
-                value={email} type="email"
-                placeholder="Enter your email"
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="password">Password</Label>
-                <Input
-                onChange={handlePassword} className="input"
-                value={password} type="password"
-                placeholder="Enter your password"
-                />
-                {errorDetail == 2 ? <span>At least 8 characters</span> : '' }
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="email">Email</Label>
+                        <Input
+                        onChange={handleEmail} className="input"
+                        value={email} type="email"
+                        placeholder="Enter your email"
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="password">Password</Label>
+                        <Input
+                        onChange={handlePassword} className="input"
+                        value={password} type="password"
+                        placeholder="Enter your password"
+                        />
+                        {errorDetail == 2 ? <span>At least 8 characters</span> : '' }
 
-            </FormGroup>
-            <FormGroup>
-                <Label for="confirm_password">Confirm Password</Label>
-                <Input
-                onChange={handleConfirmPassword} className="input"
-                value={confirmPassword} type="password"
-                placeholder="Enter your password"
-                />
-                {errorDetail == 3 ? <span>Passwords don't match.</span> : '' }
-            </FormGroup>
-            <Button onClick={handleSubmit} className="btn" type="submit">
-                Submit
-            </Button>
-            {/* <Button>Submit</Button> */}
-      </Form>
-       
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="confirm_password">Confirm Password</Label>
+                        <Input
+                        onChange={handleConfirmPassword} className="input"
+                        value={confirmPassword} type="password"
+                        placeholder="Enter your password"
+                        />
+                        {errorDetail == 3 ? <span>Passwords don't match.</span> : '' }
+                    </FormGroup>
+                    <Button onClick={handleSubmit} className="btn btn-form" type="submit">
+                        Submit
+                    </Button>
+                    {/* <Button>Submit</Button> */}
+                </Form>
+            </div>
+       </div>
       </Container>
     );
   }

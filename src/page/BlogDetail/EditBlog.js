@@ -66,7 +66,7 @@ function ModalEditBlog() {
               style={{
                   display: error ? '' : 'none',
               }}>
-              <h1>Please enter all the fields</h1>
+              <h4>Please enter all the fields</h4>
           </div>
         );
       };

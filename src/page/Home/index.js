@@ -20,6 +20,7 @@ function Blog() {
     const idBlog = useSelector(state=> (state.viewBlogDetail.idBlog));
     const isLogined = useSelector(state=> (state.userLogined.isLogined));
     const [ isSearch, setIsSearch ] = useState(false);
+    const [ listSearched, setListSearch ] = useState([]);
   
     const dispatch = useDispatch();
 
@@ -39,14 +40,14 @@ function Blog() {
                 }
 
             )
-          
+            
         })
 
     }
     
     // Handling the search feature for blog list 
 
-    function searchList(event) {
+    function searchList(event){
         var updatedList = listBlog;
         var currentVal = event.target.value;
         updatedList = updatedList.filter(function(item){
@@ -59,6 +60,7 @@ function Blog() {
             }
         )
         setIsSearch(true);
+        return updatedList;
         
     }
  

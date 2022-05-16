@@ -14,16 +14,55 @@
         }
     }
 }
+.wrap-form {
+    display: flex;
+    justify-content: center;
+    .cont-form{
+        width: 450px;
+        border: 1px solid #ded9d9;
+        padding: 30px;
+        /* justify-content: center; */
+        margin-top: 50px;
+        background: #eefcff;
+        border-radius: 15px;
+        text-align: left;
+        h3{
+            text-align: center;
+            color: #09416a;
+            font-size: 40px;
+            text-transform: uppercase;
+        }
+        .btn-form{
+            float: right;
+            background: #2d88f4;
+            border: none;
+            padding: 10px 30px;
+            font-weight: 500;
+        }
+    }
+    
+}
 ul.list-blog{
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     li {
         display: flex;
-        width: 50%;
+        width: 48%;
+        margin: 1%;
+        padding: 10px;
+        align-items: center;
+        background: #eefcff;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px 0 #eee8e8;
         .media-body {
             text-align: left;
-            padding-left: 30px;
+            padding-left: 25px;
+            p{
+                margin-bottom: 0;
+                font-size: 14px;
+                line-height: 18px;
+            }
         }
         .title-blog{
             text-decoration: none;
@@ -41,7 +80,14 @@ ul.list-blog{
     white-space: nowrap;
     width: 1px;
 }
-
+.error {
+    h4{
+        color: #e10c0c;
+        font-size: 20px;
+        text-align: center;
+        font-weight: 500;
+    }
+}
 
 // Stype of Pagination
 .wrap-pagination {

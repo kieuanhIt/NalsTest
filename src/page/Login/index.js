@@ -87,45 +87,47 @@ export default function Login() {
             style={{
                 display: error ? '' : 'none',
             }}>
-            <h1>Please enter all the fields</h1>
+            <h4>Please enter all the fields</h4>
         </div>
       );
     };
    
     return (
       <Container>
-        <div>
-          <h1>Login</h1>
-        </div>
+          <div className="wrap-form">
+            <div className="cont-form">
+              <h3>Login</h3>
    
-        {/* Calling to the methods */}
-        <div className="messages">
-          {errorMessage()}
-          {successMessage()}
-        </div>
-        <Form className="form">
-            <FormGroup>
-                <Label for="email">Email</Label>
-                <Input
-                onChange={handleEmail} className="input"
-                value={email} type="email"
-                placeholder="Enter your email"
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="password">Password</Label>
-                <Input
-                onChange={handlePassword} className="input"
-                value={password} type="password"
-                placeholder="Enter your password"
-                />
+              {/* Calling to the methods */}
+              <div className="messages">
+                {errorMessage()}
+                {successMessage()}
+              </div>
+              <Form className="form">
+                  <FormGroup>
+                      <Label for="email">Email</Label>
+                      <Input
+                      onChange={handleEmail} className="input"
+                      value={email} type="email"
+                      placeholder="Enter your email"
+                      />
+                  </FormGroup>
+                  <FormGroup>
+                      <Label for="password">Password</Label>
+                      <Input
+                      onChange={handlePassword} className="input"
+                      value={password} type="password"
+                      placeholder="Enter your password"
+                      />
 
-            </FormGroup>
-            <Button onClick={handleSubmit} className="btn" type="submit">
-                Submit
-            </Button>
-          </Form>
-        
+                  </FormGroup>
+                  <Button onClick={handleSubmit} className="btn btn-form" type="submit">
+                      Submit
+                  </Button>
+                </Form>
+            </div>
+            
+        </div>
       </Container>
     );
   }
