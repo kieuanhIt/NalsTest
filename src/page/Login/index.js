@@ -37,12 +37,8 @@ export default function Login() {
            contentType : 'application/json'
        })
        .then (res => {
-            localStorage.setItem("isLogined", true);
-            console.log("Logined");
-            dispatch({
-              type: "CHANGE_LOGIN",
-              payload: true
-            })
+            // localStorage.setItem("isLogined", true);
+            localStorage.setItem("token", res.data.data.token);
             setTimeout(() => {
                 window.location = '/';
             }, 1000);

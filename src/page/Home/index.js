@@ -78,9 +78,6 @@ function Blog() {
     
       
     useEffect(() => {
-        // setTimeout(() => {
-        //     ;
-        // }, 0);
         getBlog();    
     })
     return (
