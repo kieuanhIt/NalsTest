@@ -92,7 +92,7 @@ function Header() {
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle caret>{userName}</DropdownToggle>
                         <DropdownMenu>
-                            <DropdownItem><Link to="/login">Profile</Link></DropdownItem>
+                            <DropdownItem><Link to="/">Profile</Link></DropdownItem>
                             <DropdownItem onClick = {logoutUser}>Logout</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
