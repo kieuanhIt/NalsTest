@@ -63,7 +63,12 @@ function Blog() {
         return updatedList;
         
     }
- 
+    const txtSub = (item) => {
+        if(item.length < 100)
+            return item;
+        else
+            return item.toString().slice(3).substr(0,100)+ '...';
+    }
     useEffect(() => {
         getBlog();    
     })
@@ -94,7 +99,7 @@ function Blog() {
                     </Media>
                     <Media body>
                         <Link className="title-blog"  to={`/blog/${item.id}`}>{item.title}</Link> 
-                        <p>{item.content}</p>
+                        <p>{txtSub(item.content)}</p>
                     </Media> 
                 </Media>
             )   
