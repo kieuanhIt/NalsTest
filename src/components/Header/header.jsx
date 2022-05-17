@@ -100,10 +100,8 @@ function Header() {
                     <ul className="right-head">
                         <li><Link to='/login'>Login</Link></li>
                         <li><Link to='/register'>Register</Link></li>
-                    </ul>
-                    
-                }
-                    
+                    </ul>    
+                }  
                 </div>
             </Container>
         </div>

@@ -16,11 +16,12 @@ import axios from "axios";
 function Blog() {
     
     const listBlog = useSelector(state=> (state.showListBlog.listBlog));
+    const filteredData = useSelector(state=> (state.showFiltedBlog.filterBlog));
     const pageNumber = useSelector(state=> (state.showListBlog.pageNumber));
     const idBlog = useSelector(state=> (state.viewBlogDetail.idBlog));
     const isLogined = useSelector(state=> (state.userLogined.isLogined));
     const [ isSearch, setIsSearch ] = useState(false);
-    const [ listSearched, setListSearch ] = useState([]);
+    const [ query, setQuery ] = useState('');
   
     const dispatch = useDispatch();
 
@@ -34,35 +35,33 @@ function Blog() {
             params: {page: pageNumber}
         })
         .then (res => {
+            // dispatch({
+            //     type: "SHOW_LIST_BLOG",
+            //     payload_list: res.data.data.items
+            //     }
+
+            // )  
+            const filteredData = res.data.data.items.filter(element => {
+                return element.title.toLowerCase().includes(query.toLowerCase());
+              });
             dispatch({
-                type: "SHOW_LIST_BLOG",
-                payload_list: res.data.data.items
+                type: "SHOW_FILTER_BLOG",
+                payload_filter: filteredData
                 }
 
-            )
-            
+            )    
         })
 
     }
-    
+   
     // Handling the search feature for blog list 
-
-    function searchList(event){
-        var updatedList = listBlog;
-        var currentVal = event.target.value;
-        updatedList = updatedList.filter(function(item){
-          return item.title.toLowerCase().search(currentVal.toLowerCase()) !== -1;
-        });
+    const handleInputChange = event => {
+        const query = event.target.value;
+        setQuery(query);
         
-        dispatch({
-            type: "SHOW_LIST_BLOG",
-            payload_list: updatedList
-            }
-        )
-        setIsSearch(true);
-        return updatedList;
         
-    }
+      };
+    
     const txtSub = (item) => {
         if(item.length < 100)
             return item;
@@ -78,7 +77,7 @@ function Blog() {
         <Container>
             <div className="head-blog">
                 <div className="search">
-                    <input type="text" placeholder="Search" onChange={searchList}/>
+                    <input type="text" placeholder="Search" onChange={handleInputChange}/>
                 </div>
                 { isLogined ? 
                     <ModalAddBlog />
@@ -87,15 +86,17 @@ function Blog() {
                 }  
             </div>
              <Media list className="list-blog">
-            {listBlog.map((item,index) => 
+            {filteredData.map((item,index) => 
                 <Media key={index} tag="li"> 
-                    <Media className="thumb-blog">                      
-                        <Media
-                            object
-                            src={item.image.url}
-                            alt="blog"
-                            width="100px"
-                        />                                                                    
+                    <Media className="thumb-blog">    
+                        <Link className="title-blog"  to={`/blog/${item.id}`}>                  
+                            <Media
+                                object
+                                src={item.image.url}
+                                alt="blog"
+                                width="100px"
+                            />       
+                        </Link>                                                             
                     </Media>
                     <Media body>
                         <Link className="title-blog"  to={`/blog/${item.id}`}>{item.title}</Link> 

@@ -8,6 +8,9 @@ const initialState = {
     blogDetail : {},
 };
 
+const filter = {
+    filterBlog: [],
+}
 // reducer for Blog page
 export const showListBlog = (state = initialState,action) => {
    switch(action.type){
@@ -23,7 +26,17 @@ export const showListBlog = (state = initialState,action) => {
    }
     return {...state};
 }
-
+// reducer for Filter Blog page
+export const showFiltedBlog = (state = filter,action) => {
+    switch(action.type){
+        case "SHOW_FILTER_BLOG" :
+            const filterBlog = action.payload_filter;
+            return {...state,filterBlog}
+        default:
+            break;
+    }
+    return {...state};
+ }
 
 // reducer for Blog Detail page
 
